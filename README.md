@@ -1,8 +1,9 @@
-$ npm install <br>
-$ node app
+Execução
+npm install <br>
+node app
 
 --Outro cmd-- <br>
-$ cd zoox <br>
-$ npm install <br>
-$ ng serve <br>
+cd zoox <br>
+npm install <br>
+ng serve <br>
 
