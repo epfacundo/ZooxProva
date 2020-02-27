@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="header">
+    <span *ngIf="estado._id"> <h2>Editar Estado</h2></span>
+    <span *ngIf="!estado._id"><h2>Adcionar Estado</h2></span>
+  </div>
+  <div class="content">
+    <div *ngIf="feedback" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
+    <form *ngIf="estado" #editForm="ngForm" (ngSubmit)="adicionarEstado()">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input [(ngModel)]="estado.nome" id="nome" name="nome" class="form-control" required>
+      </div>
+    
+      <div class="form-group">
+        <label for="abreviacao">Abreviação</label>
+        <input [(ngModel)]="estado.abreviacao" id="abreviacao" name="abreviacao" class="form-control" required minlength="2" maxlength="2">
+      </div>
+      <div class="form-group" *ngIf="estado._id">
+        <label for="criadoEm">Criado Em</label>
+        <input value="{{estado.criadoEm | date:'dd/MM/yyyy HH:mm:ss':'-0300'}}" id="criadoEm" name="criadoEm" class="form-control" disabled>
+      </div>
+    
+      <div class="form-group" *ngIf="estado.alteradoEm">
+        <label for="alteradoEm">Alterado Em</label>
+        <input value="{{estado.alteradoEm | date:'dd/MM/yyyy HH:mm:ss':'-0300'}}" id="alteradoEm" name="alteradoEm" class="form-control" disabled>
+      </div>
+    
+      <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid">
+        <i class="fas fa-save"></i>
+        Salvar</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">
+        <i class="fas fa-undo"></i>
+        Voltar</button>
+    </form>
+  </div>
+</div>
